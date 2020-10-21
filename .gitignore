@@ -130,3 +130,6 @@ dmypy.json
 
 # Michellaneous
 .DS_Store
+notebooks/figures
+notebooks/archive
+scripts/archive
