@@ -161,3 +161,10 @@ Temporary Items
 notebooks/figures
 notebooks/archive
 scripts/archive
+
+# PyCharm files ----------------------------------------------------------------
+.idea/aaut-2021.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
