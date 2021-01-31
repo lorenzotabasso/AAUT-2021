@@ -6,19 +6,20 @@ from subprocess import check_call
 
 
 def post_save(model, os_path, contents_manager):
-    """post-save hook for converting notebooks to .py scripts"""
+    """Jupyter post-save hook for converting notebooks to .py scripts on save."""
+
     if model['type'] != 'notebook':
         return  # only do this for notebooks
 
-    directory, filename = os.path.split(os_path)
+    working_directory, filename = os.path.split(os_path)
 
-    # Save the notebook as a Python script in the right folder
-    check_call(['jupyter', 'nbconvert', '--to',
-                'script', filename], cwd=directory)
+    # Launch a thread to save the notebook as a Python script in the right folder
+    check_call(['jupyter', 'nbconvert', '--output-dir={}'.format("../scripts/"), '--to',
+                'script', filename], cwd=working_directory)
 
-    # Save the notebook as a HTML page in the right folder
-    # check_call(['jupyter', 'nbconvert', '--to',
-    #             'html', filename], cwd=directory)
+    # Launch a thread to save the notebook as a HTML page in the right folder
+    # check_call(['jupyter', 'nbconvert', '--output-dir={}'.format("../scripts/"), '--to',
+    #             'html', filename], cwd=working_directory)
 
 
 c.FileContentsManager.post_save_hook = post_save
